@@ -3,7 +3,7 @@ import { Body, Card, CardItem, Container, Content, Text, List, ListItem } from '
 import {StyleSheet} from 'react-native';
 import {Actions} from "react-native-router-flux";
 
-export default class ActivityCategoryView extends Component {
+export default class EventsView extends Component {
   constructor (props) {
     super(props);
     this.state = {
@@ -57,7 +57,7 @@ export default class ActivityCategoryView extends Component {
                   <ListItem>
                     <Content>
                       <Card>
-                        <CardItem button onPress= {() => {Actions.pop(); }}>
+                        <CardItem button onPress= {() => {Actions.SingleEventView({value: item}); }}>
                           <Text style={ styles.content }>
                             {item.name.fi}
                           </Text>
