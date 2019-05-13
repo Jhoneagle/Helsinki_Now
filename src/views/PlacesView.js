@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { Body, Card, CardItem, Container, Content, Text, List, ListItem } from 'native-base';
 import {StyleSheet} from 'react-native';
 import {Actions} from "react-native-router-flux";
+import Waiting from "../components/Waiting";
 
 export default class PlacesView extends Component {
   constructor (props) {
@@ -30,15 +31,7 @@ export default class PlacesView extends Component {
       return(
         <Container>
           <Content padder>
-            <Card style={ styles.data }>
-              <CardItem>
-                <Body>
-                  <Text style={ styles.warning }>
-                    Loading... Pls wait!
-                  </Text>
-                </Body>
-              </CardItem>
-            </Card>
+            <Waiting />
           </Content>
         </Container>
       )
