@@ -3,6 +3,7 @@ import { Body, Card, CardItem, Container, Content, Text, List, ListItem, Right }
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {StyleSheet} from 'react-native';
 import {Actions} from "react-native-router-flux";
+import Waiting from "../components/Waiting";
 
 export default class PlaceCategoryView extends Component {
   constructor (props) {
@@ -31,15 +32,7 @@ export default class PlaceCategoryView extends Component {
       return(
         <Container>
           <Content padder>
-            <Card style={ styles.data }>
-              <CardItem>
-                <Body>
-                  <Text style={ styles.warning }>
-                    Loading... Pls wait!
-                  </Text>
-                </Body>
-              </CardItem>
-            </Card>
+            <Waiting />
           </Content>
         </Container>
       )
@@ -75,18 +68,6 @@ export default class PlaceCategoryView extends Component {
 }
 
 const styles = StyleSheet.create({
-  navigationButton: {
-    alignSelf: 'center',
-    margin: 30,
-  },
-  data: {
-    margin: 1,
-  },
-  warning: {
-    alignSelf: 'center',
-    fontSize: 18,
-    color: 'red',
-  },
   content: {
     alignSelf: 'center',
     fontSize: 16,

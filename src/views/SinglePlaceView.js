@@ -3,13 +3,6 @@ import { Body, Card, CardItem, Container, Content, Text, List, ListItem } from '
 import {StyleSheet} from 'react-native';
 
 export default class SinglePlaceView extends Component {
-  constructor (props) {
-    super(props);
-    this.state = {
-      filter: ''
-    };
-  }
-  
   render() {
     const object = this.props.value;
     
@@ -26,24 +19,8 @@ export default class SinglePlaceView extends Component {
 }
 
 const styles = StyleSheet.create({
-  navigationButton: {
-    alignSelf: 'center',
-    margin: 30,
-  },
-  data: {
-    margin: 1,
-  },
   content: {
     alignSelf: 'center',
     fontSize: 16,
   },
-  warning: {
-    alignSelf: 'center',
-    fontSize: 18,
-    color: 'red',
-  },
-  header: {
-    fontWeight: 'bold',
-    fontSize: 21,
-  }
 });

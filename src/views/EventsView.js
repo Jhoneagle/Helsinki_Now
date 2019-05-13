@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { Body, Card, CardItem, Container, Content, Text, List, ListItem } from 'native-base';
 import {StyleSheet} from 'react-native';
 import {Actions} from "react-native-router-flux";
+import Waiting from "../components/Waiting";
 
 export default class EventsView extends Component {
   constructor (props) {
@@ -30,15 +31,7 @@ export default class EventsView extends Component {
       return(
         <Container>
           <Content padder>
-            <Card style={ styles.data }>
-              <CardItem>
-                <Body>
-                  <Text style={ styles.warning }>
-                    Loading... Pls wait!
-                  </Text>
-                </Body>
-              </CardItem>
-            </Card>
+            <Waiting />
           </Content>
         </Container>
       )
@@ -74,21 +67,9 @@ export default class EventsView extends Component {
 }
 
 const styles = StyleSheet.create({
-  navigationButton: {
-    alignSelf: 'center',
-    margin: 30,
-  },
-  data: {
-    margin: 1,
-  },
   content: {
     alignSelf: 'center',
     fontSize: 16,
-  },
-  warning: {
-    alignSelf: 'center',
-    fontSize: 18,
-    color: 'red',
   },
   header: {
     fontWeight: 'bold',
