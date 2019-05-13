@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Container, Content, Text, Left, Header, Body, Button, Title, Right, Card, CardItem, Icon } from 'native-base';
+import { Container, Content, Text, Body, Button, Card, CardItem } from 'native-base';
 import { Actions } from 'react-native-router-flux';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet } from 'react-native';
 
 export default class MainView extends Component {
   constructor (props) {

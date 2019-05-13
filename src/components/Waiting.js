@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Body, Card, CardItem, Text} from "native-base";
+import { Body, Card, CardItem, Text } from "native-base";
 import {StyleSheet} from "react-native";
 
 export default class Waiting extends Component {

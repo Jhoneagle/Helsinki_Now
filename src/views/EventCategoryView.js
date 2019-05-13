@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Body, Card, CardItem, Container, Content, Text, List, ListItem, Right } from 'native-base';
+import { Card, CardItem, Container, Content, Text, List, ListItem, Right } from 'native-base';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {StyleSheet} from 'react-native';
 import {Actions} from "react-native-router-flux";

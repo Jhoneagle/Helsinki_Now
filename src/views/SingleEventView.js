@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Body, Card, CardItem, Container, Content, Text, List, ListItem } from 'native-base';
+import { Container, Content, Text } from 'native-base';
 import {StyleSheet} from 'react-native';
 
 export default class SingleEventView extends Component {
