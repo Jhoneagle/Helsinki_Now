@@ -4,13 +4,6 @@ import { Actions } from 'react-native-router-flux';
 import { StyleSheet } from 'react-native';
 
 export default class MainView extends Component {
-  constructor (props) {
-    super(props);
-    this.state = {
-    
-    };
-  }
-  
   render(){
     return(
       <Container>

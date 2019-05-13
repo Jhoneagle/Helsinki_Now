@@ -68,18 +68,6 @@ export default class PlaceCategoryView extends Component {
 }
 
 const styles = StyleSheet.create({
-  navigationButton: {
-    alignSelf: 'center',
-    margin: 30,
-  },
-  data: {
-    margin: 1,
-  },
-  warning: {
-    alignSelf: 'center',
-    fontSize: 18,
-    color: 'red',
-  },
   content: {
     alignSelf: 'center',
     fontSize: 16,

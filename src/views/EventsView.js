@@ -67,21 +67,9 @@ export default class EventsView extends Component {
 }
 
 const styles = StyleSheet.create({
-  navigationButton: {
-    alignSelf: 'center',
-    margin: 30,
-  },
-  data: {
-    margin: 1,
-  },
   content: {
     alignSelf: 'center',
     fontSize: 16,
-  },
-  warning: {
-    alignSelf: 'center',
-    fontSize: 18,
-    color: 'red',
   },
   header: {
     fontWeight: 'bold',
