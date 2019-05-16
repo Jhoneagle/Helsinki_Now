@@ -3,6 +3,7 @@ import { Card, CardItem, Container, Content, Text, List, ListItem } from 'native
 import {StyleSheet} from 'react-native';
 import {Actions} from "react-native-router-flux";
 import Waiting from "../components/Waiting";
+import { cleanHTML } from "../utils";
 
 export default class ActivitiesView extends Component {
   constructor (props) {
@@ -53,6 +54,11 @@ export default class ActivitiesView extends Component {
                           <CardItem button onPress= {() => {Actions.SingleActivityView({value: item}); }}>
                             <Text style={ styles.content }>
                               {item.name.fi}
+                            </Text>
+                          </CardItem>
+                          <CardItem>
+                            <Text numberOfLines={4}>
+                              {cleanHTML(item.description.body)}
                             </Text>
                           </CardItem>
                         </Card>

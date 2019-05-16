@@ -3,6 +3,7 @@ import { Card, CardItem, Container, Content, Text, List, ListItem, Badge, Right 
 import {StyleSheet} from 'react-native';
 import {Actions} from "react-native-router-flux";
 import Waiting from "../components/Waiting";
+import { hoursFromStringToInt } from "../utils";
 
 export default class PlacesView extends Component {
   constructor (props) {
@@ -25,13 +26,6 @@ export default class PlacesView extends Component {
       })
       .catch(error => console.log(error)) //to catch the errors if any
   }
-  
-  hoursFromStringToInt = (value) => {
-    if (value === null) return null;
-    
-    const parts = value.split(":");
-    return parseInt(parts[0]);
-  };
   
   render() {
     if(this.state.loading) {
@@ -70,8 +64,8 @@ export default class PlacesView extends Component {
                           </Text>
                         </CardItem>
                         <CardItem>
-                          <Text style={ styles.address }>
-                            {item.location.address.street_address}
+                          <Text  numberOfLines={2} style={ styles.address }>
+                            {item.location.address.street_address}, {item.location.address.locality}
                           </Text>
                         </CardItem>
                         {item.opening_hours.hours == null ?
@@ -80,19 +74,19 @@ export default class PlacesView extends Component {
                             <CardItem>
                               <Text style={ styles.time }>
                                 {item.opening_hours.hours[dayNumber].open24h ? 'Open hole day!' :
-                                    (this.hoursFromStringToInt(item.opening_hours.hours[dayNumber].opens) == null ? 'Closed hole day' :
-                                        'Open: ' + this.hoursFromStringToInt(item.opening_hours.hours[dayNumber].opens) + '-'
-                                        + this.hoursFromStringToInt(item.opening_hours.hours[dayNumber].closes)
+                                    (hoursFromStringToInt(item.opening_hours.hours[dayNumber].opens) == null ? 'Closed hole day' :
+                                        'Open: ' + hoursFromStringToInt(item.opening_hours.hours[dayNumber].opens) + '-'
+                                        + hoursFromStringToInt(item.opening_hours.hours[dayNumber].closes)
                                     )
                                 }
                               </Text>
                               <Right>
-                                {this.hoursFromStringToInt(item.opening_hours.hours[dayNumber].opens) == null ?
+                                {hoursFromStringToInt(item.opening_hours.hours[dayNumber].opens) == null ?
                                   <Badge danger>
                                     <Text>Closed</Text>
                                   </Badge> :
-                                  (this.hoursFromStringToInt(item.opening_hours.hours[dayNumber].opens) <= date.getHours() &&
-                                    this.hoursFromStringToInt(item.opening_hours.hours[dayNumber].closes) > date.getHours() ?
+                                  (hoursFromStringToInt(item.opening_hours.hours[dayNumber].opens) <= date.getHours() &&
+                                    hoursFromStringToInt(item.opening_hours.hours[dayNumber].closes) > date.getHours() ?
                                       <Badge success>
                                         <Text>Open</Text>
                                       </Badge> :

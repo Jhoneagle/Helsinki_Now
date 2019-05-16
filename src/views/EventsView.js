@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 import { Card, CardItem, Container, Content, Text, List, ListItem } from 'native-base';
-import {StyleSheet} from 'react-native';
+import { StyleSheet } from 'react-native';
 import {Actions} from "react-native-router-flux";
 import Waiting from "../components/Waiting";
+import { cleanHTML, parseTimeStamp } from "../utils";
 
 export default class EventsView extends Component {
   constructor (props) {
@@ -56,8 +57,17 @@ export default class EventsView extends Component {
                           </Text>
                         </CardItem>
                         <CardItem>
-                          <Text style={ styles.address }>
-                            {item.location.address.street_address}
+                          <Text numberOfLines={3}>
+                            {cleanHTML(item.description.body)}
+                          </Text>
+                        </CardItem>
+                        <CardItem>
+                          <Text numberOfLines={2} style={ styles.time }>
+                            {parseTimeStamp(item.event_dates.starting_day)}
+                            
+                            {item.event_dates.ending_day == null ?
+                              '' : (' - ' + parseTimeStamp(item.event_dates.ending_day))
+                            }
                           </Text>
                         </CardItem>
                       </Card>
@@ -83,9 +93,5 @@ const styles = StyleSheet.create({
   time: {
     alignSelf: 'center',
     fontSize: 16,
-  },
-  address: {
-    alignSelf: 'center',
-    fontSize: 18,
   },
 });
