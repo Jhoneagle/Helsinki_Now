@@ -55,6 +55,11 @@ export default class EventsView extends Component {
                             {item.name.fi}
                           </Text>
                         </CardItem>
+                        <CardItem>
+                          <Text style={ styles.address }>
+                            {item.location.address.street_address}
+                          </Text>
+                        </CardItem>
                       </Card>
                     </Content>
                   </ListItem>
@@ -74,5 +79,13 @@ const styles = StyleSheet.create({
   header: {
     fontWeight: 'bold',
     fontSize: 21,
-  }
+  },
+  time: {
+    alignSelf: 'center',
+    fontSize: 16,
+  },
+  address: {
+    alignSelf: 'center',
+    fontSize: 18,
+  },
 });
