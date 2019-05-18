@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
-import {Badge, Card, CardItem, Container, Content, Right, Text} from 'native-base';
-import {Linking, StyleSheet} from 'react-native';
-import {checkUrl, cleanHTML, hoursFromStringToInt, parseTimeStamp} from "../utils";
+import { Card, CardItem, Container, Content, Text } from 'native-base';
+import { Linking, StyleSheet } from 'react-native';
 import PlaceOpenStatus from "../components/PlaceOpenStatus";
+import Info from "../components/Info";
+import Header from "../components/Header";
 
 export default class SinglePlaceView extends Component {
   render() {
@@ -17,39 +18,10 @@ export default class SinglePlaceView extends Component {
     
     return (
       <Container>
-        <Text style={ styles.h1 }>
-          {object.name.fi}
-        </Text>
+        <Header content={object.name.fi} />
+  
         <Content padder>
-          <Card>
-            <CardItem header>
-              <Text style={ styles.h3 }>
-                Description
-              </Text>
-            </CardItem>
-    
-            {object.info_url == null ? <CardItem/> :
-              <CardItem>
-                <Text>
-                  {object.description.intro}
-                </Text>
-              </CardItem>
-            }
-    
-            <CardItem>
-              <Text>
-                {cleanHTML(object.description.body)}
-              </Text>
-            </CardItem>
-    
-            {object.info_url == null ? <CardItem/> :
-              <CardItem footer>
-                <Text style={ styles.link }>
-                  For more <Text style={{color: 'blue'}} onPress={() => Linking.openURL(checkUrl(object.info_url))}>information</Text>.
-                </Text>
-              </CardItem>
-            }
-          </Card>
+          <Info intro={object.description.intro} description={object.description.body} url={object.info_url} />
           
           <Card>
             <CardItem header>
@@ -73,8 +45,9 @@ export default class SinglePlaceView extends Component {
                 Today
               </Text>
             </CardItem>
-  
-            <PlaceOpenStatus item={object} day={dayNumber} date={date} />
+            <CardItem>
+              <PlaceOpenStatus item={object} day={dayNumber} date={date} />
+            </CardItem>
           </Card>
   
           <Card>
@@ -137,19 +110,10 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     fontSize: 16,
   },
-  h1: {
-    alignSelf: 'center',
-    fontSize: 24,
-    fontWeight: 'bold',
-  },
   h3: {
     alignSelf: 'center',
     fontSize: 20,
     fontWeight: 'bold',
-  },
-  link: {
-    alignSelf: 'center',
-    fontSize: 16,
   },
   address: {
     alignSelf: 'center',

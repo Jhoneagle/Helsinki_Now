@@ -94,10 +94,6 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 21,
   },
-  time: {
-    alignSelf: 'center',
-    fontSize: 16,
-  },
   address: {
     alignSelf: 'center',
     fontSize: 18,

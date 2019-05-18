@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
 import { Card, CardItem, Container, Content, Text } from 'native-base';
 import { StyleSheet, Linking } from 'react-native';
-import { checkUrl, cleanHTML, parseTimeStamp } from "../utils";
+import { parseTimeStamp } from "../utils";
+import Info from "../components/Info";
+import Header from "../components/Header";
 
 export default class SingleEventView extends Component {
   render() {
@@ -9,39 +11,10 @@ export default class SingleEventView extends Component {
     
     return (
       <Container>
-        <Text style={ styles.h1 }>
-          {object.name.fi}
-        </Text>
+        <Header content={object.name.fi} />
+        
         <Content padder>
-          <Card>
-            <CardItem header>
-              <Text style={ styles.h3 }>
-                Description
-              </Text>
-            </CardItem>
-  
-            {object.info_url == null ? <CardItem/> :
-              <CardItem>
-                <Text>
-                  {object.description.intro}
-                </Text>
-              </CardItem>
-            }
-            
-            <CardItem>
-              <Text>
-                {cleanHTML(object.description.body)}
-              </Text>
-            </CardItem>
-            
-            {object.info_url == null ? <CardItem/> :
-              <CardItem footer>
-                <Text style={ styles.link }>
-                  For more <Text style={{color: 'blue'}} onPress={() => Linking.openURL(checkUrl(object.info_url))}>information</Text>.
-                </Text>
-              </CardItem>
-            }
-          </Card>
+          <Info intro={object.description.intro} description={object.description.body} url={object.info_url} />
           
           <Card>
             <CardItem header>
@@ -79,11 +52,6 @@ const styles = StyleSheet.create({
   content: {
     alignSelf: 'center',
     fontSize: 16,
-  },
-  h1: {
-    alignSelf: 'center',
-    fontSize: 24,
-    fontWeight: 'bold',
   },
   h3: {
     alignSelf: 'center',

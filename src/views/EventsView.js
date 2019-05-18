@@ -52,7 +52,7 @@ export default class EventsView extends Component {
                     <Content>
                       <Card>
                         <CardItem button onPress= {() => {Actions.SingleEventView({value: item}); }}>
-                          <Text style={ styles.content }>
+                          <Text style={ styles.name }>
                             {item.name.fi}
                           </Text>
                         </CardItem>
@@ -82,7 +82,7 @@ export default class EventsView extends Component {
 }
 
 const styles = StyleSheet.create({
-  content: {
+  name: {
     alignSelf: 'center',
     fontSize: 16,
   },
