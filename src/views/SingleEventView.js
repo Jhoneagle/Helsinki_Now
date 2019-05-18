@@ -19,16 +19,21 @@ export default class SingleEventView extends Component {
                 Description
               </Text>
             </CardItem>
-            <CardItem>
-              <Text>
-                {object.description.intro}
-              </Text>
-            </CardItem>
+  
+            {object.info_url == null ? <CardItem/> :
+              <CardItem>
+                <Text>
+                  {object.description.intro}
+                </Text>
+              </CardItem>
+            }
+            
             <CardItem>
               <Text>
                 {cleanHTML(object.description.body)}
               </Text>
             </CardItem>
+            
             {object.info_url == null ? <CardItem/> :
               <CardItem footer>
                 <Text style={ styles.link }>
@@ -44,6 +49,7 @@ export default class SingleEventView extends Component {
                 When and where
               </Text>
             </CardItem>
+            
             {object.location.address.street_address == null ? <CardItem/> :
               <CardItem>
                 <Text style={ styles.address }>
@@ -51,6 +57,7 @@ export default class SingleEventView extends Component {
                 </Text>
               </CardItem>
             }
+            
             <CardItem>
               <Text numberOfLines={2} style={ styles.time }>
     
