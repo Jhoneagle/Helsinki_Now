@@ -4,6 +4,7 @@ import {StyleSheet} from 'react-native';
 import {Actions} from "react-native-router-flux";
 import Waiting from "../components/Waiting";
 import { hoursFromStringToInt } from "../utils";
+import PlaceOpenStatus from "../components/PlaceOpenStatus";
 
 export default class PlacesView extends Component {
   constructor (props) {
@@ -70,38 +71,8 @@ export default class PlacesView extends Component {
                             </Text>
                           </CardItem>
                         }
-                        
-                        {item.opening_hours.hours == null ?
-                          <CardItem><Text>No info available!</Text></CardItem> :
-                          (
-                            <CardItem>
-                              <Text style={ styles.time }>
-                                {item.opening_hours.hours[dayNumber].open24h ? 'Open hole day!' :
-                                    (hoursFromStringToInt(item.opening_hours.hours[dayNumber].opens) == null ? 'Closed hole day' :
-                                        'Open: ' + hoursFromStringToInt(item.opening_hours.hours[dayNumber].opens) + '-'
-                                        + hoursFromStringToInt(item.opening_hours.hours[dayNumber].closes)
-                                    )
-                                }
-                              </Text>
-                              <Right>
-                                {hoursFromStringToInt(item.opening_hours.hours[dayNumber].opens) == null ?
-                                  <Badge danger>
-                                    <Text>Closed</Text>
-                                  </Badge> :
-                                  (hoursFromStringToInt(item.opening_hours.hours[dayNumber].opens) <= date.getHours() &&
-                                    hoursFromStringToInt(item.opening_hours.hours[dayNumber].closes) > date.getHours() ?
-                                      <Badge success>
-                                        <Text>Open</Text>
-                                      </Badge> :
-                                      <Badge danger>
-                                        <Text>Closed</Text>
-                                      </Badge>
-                                  )
-                                }
-                              </Right>
-                            </CardItem>
-                          )
-                        }
+  
+                        <PlaceOpenStatus item={item} day={dayNumber} date={date} />
                       </Card>
                     </Content>
                   </ListItem>

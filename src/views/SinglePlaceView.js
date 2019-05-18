@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Badge, Card, CardItem, Container, Content, Right, Text} from 'native-base';
 import {Linking, StyleSheet} from 'react-native';
 import {checkUrl, cleanHTML, hoursFromStringToInt, parseTimeStamp} from "../utils";
+import PlaceOpenStatus from "../components/PlaceOpenStatus";
 
 export default class SinglePlaceView extends Component {
   render() {
@@ -73,37 +74,7 @@ export default class SinglePlaceView extends Component {
               </Text>
             </CardItem>
   
-            {object.opening_hours.hours == null ?
-              <CardItem><Text>No info available!</Text></CardItem> :
-              (
-                <CardItem>
-                  <Text style={ styles.time }>
-                    {object.opening_hours.hours[dayNumber].open24h ? 'Open hole day!' :
-                      (hoursFromStringToInt(object.opening_hours.hours[dayNumber].opens) == null ? 'Closed hole day' :
-                          'Open: ' + hoursFromStringToInt(object.opening_hours.hours[dayNumber].opens) + '-'
-                          + hoursFromStringToInt(object.opening_hours.hours[dayNumber].closes)
-                      )
-                    }
-                  </Text>
-                  <Right>
-                    {hoursFromStringToInt(object.opening_hours.hours[dayNumber].opens) == null ?
-                      <Badge danger>
-                        <Text>Closed</Text>
-                      </Badge> :
-                      (hoursFromStringToInt(object.opening_hours.hours[dayNumber].opens) <= date.getHours() &&
-                        hoursFromStringToInt(object.opening_hours.hours[dayNumber].closes) > date.getHours() ?
-                          <Badge success>
-                            <Text>Open</Text>
-                          </Badge> :
-                          <Badge danger>
-                            <Text>Closed</Text>
-                          </Badge>
-                      )
-                    }
-                  </Right>
-                </CardItem>
-              )
-            }
+            <PlaceOpenStatus item={object} day={dayNumber} date={date} />
           </Card>
   
           <Card>
@@ -112,8 +83,48 @@ export default class SinglePlaceView extends Component {
                 This week
               </Text>
             </CardItem>
-    
-            
+            <CardItem>
+              <Text style={ styles.weekdays }>
+                Monday:
+              </Text>
+              <PlaceOpenStatus item={object} day={0} />
+            </CardItem>
+            <CardItem>
+              <Text style={ styles.weekdays }>
+                Tuesday:
+              </Text>
+              <PlaceOpenStatus item={object} day={1} />
+            </CardItem>
+            <CardItem>
+              <Text style={ styles.weekdays }>
+                Wednesday:
+              </Text>
+              <PlaceOpenStatus item={object} day={2} />
+            </CardItem>
+            <CardItem>
+              <Text style={ styles.weekdays }>
+                Thursday:
+              </Text>
+              <PlaceOpenStatus item={object} day={3} />
+            </CardItem>
+            <CardItem>
+              <Text style={ styles.weekdays }>
+                Friday:
+              </Text>
+              <PlaceOpenStatus item={object} day={4} />
+            </CardItem>
+            <CardItem>
+              <Text style={ styles.weekdays }>
+                Saturday:
+              </Text>
+              <PlaceOpenStatus item={object} day={5} />
+            </CardItem>
+            <CardItem>
+              <Text style={ styles.weekdays }>
+                Sunday:
+              </Text>
+              <PlaceOpenStatus item={object} day={6} />
+            </CardItem>
           </Card>
         </Content>
       </Container>
@@ -136,15 +147,15 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
   },
-  time: {
-    alignSelf: 'center',
-    fontSize: 16,
-  },
   link: {
     alignSelf: 'center',
     fontSize: 16,
   },
   address: {
+    alignSelf: 'center',
+    fontSize: 18,
+  },
+  weekdays: {
     alignSelf: 'center',
     fontSize: 18,
   },
