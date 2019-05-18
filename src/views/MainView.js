@@ -17,21 +17,21 @@ export default class MainView extends Component {
               </Body>
             </CardItem>
           </Card>
-          <Button transparent style={ styles.navigationButton } onPress= {() => {Actions.placeCategoryView(); }}>
+          <Button block info style={ styles.navigationButton } onPress= {() => {Actions.placeCategoryView(); }}>
             <Body>
               <Text>
                 Places
               </Text>
             </Body>
           </Button>
-          <Button transparent style={ styles.navigationButton } onPress= {() => {Actions.eventCategoryView(); }}>
+          <Button block info style={ styles.navigationButton } onPress= {() => {Actions.eventCategoryView(); }}>
             <Body>
               <Text>
                 Events
               </Text>
             </Body>
           </Button>
-          <Button transparent style={ styles.navigationButton } onPress= {() => {Actions.activityCategoryView(); }}>
+          <Button block info style={ styles.navigationButton } onPress= {() => {Actions.activityCategoryView(); }}>
             <Body>
               <Text>
                 Activities

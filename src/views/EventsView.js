@@ -57,7 +57,7 @@ export default class EventsView extends Component {
                           </Text>
                         </CardItem>
                         <CardItem>
-                          <Text numberOfLines={3}>
+                          <Text numberOfLines={4}>
                             {cleanHTML(item.description.body)}
                           </Text>
                         </CardItem>

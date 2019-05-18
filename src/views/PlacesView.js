@@ -63,11 +63,14 @@ export default class PlacesView extends Component {
                             {item.name.fi}
                           </Text>
                         </CardItem>
-                        <CardItem>
-                          <Text  numberOfLines={2} style={ styles.address }>
-                            {item.location.address.street_address}, {item.location.address.locality}
-                          </Text>
-                        </CardItem>
+                        {item.location.address.street_address == null ? <CardItem/> :
+                          <CardItem>
+                            <Text style={ styles.address }>
+                              {item.location.address.street_address}, {item.location.address.locality}
+                            </Text>
+                          </CardItem>
+                        }
+                        
                         {item.opening_hours.hours == null ?
                           <CardItem><Text>No info available!</Text></CardItem> :
                           (

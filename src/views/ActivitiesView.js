@@ -57,7 +57,7 @@ export default class ActivitiesView extends Component {
                             </Text>
                           </CardItem>
                           <CardItem>
-                            <Text numberOfLines={4}>
+                            <Text numberOfLines={5}>
                               {cleanHTML(item.description.body)}
                             </Text>
                           </CardItem>

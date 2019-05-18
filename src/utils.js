@@ -1,13 +1,30 @@
 export const cleanHTML = (value) => {
-  return value.replace(/<(\/)*p>/g, "")
+  return value.replace(/<(\/)*p>/g, "\n")
     .replace(/<(\/)*span>/g, "")
-    .replace(/<(\/)*br>/g, "")
+    .replace(/<(\/)*br>/g, "\n")
+    .replace(/<(\/)*b>/g, "")
     .replace(/<(\/)*strong>/g, "")
     .replace(/<(\/)*h[1-9]>/g, "")
     .replace(/<(\/)*a(.)*>/g, "")
+    .replace(/^\s+|\s+$/g, '')
     .replace(/((\.)|(!)|(\?))([A-Y])/g, "$1 $5")
-    .replace(/&nbsp/g, "")
+    .replace(/&nbsp/g, " ")
+    .replace(/&amp/g, "&")
+    .replace(/&lt/g, "<")
+    .replace(/&gt/g, ">")
+    .replace(/&quot/g, "\"")
+    .replace(/&apos/g, "'")
+    .replace(/&pound/g, "£")
+    .replace(/&euro/g, "€")
     .replace(/([a-y])([A-Y])/g, "$1 $2");
+};
+
+export const checkUrl = (value) => {
+  if (value.startsWith('https://') || value.startsWith('http://')) {
+    return value;
+  } else {
+    return 'https://' + value;
+  }
 };
 
 export const parseTimeStamp = (value) => {
